@@ -1,0 +1,98 @@
+
+[
+  {
+    "permissionName": "用户管理",
+    "permissionCode": "user:manage",
+    "module": "system",
+    "description": "用户管理模块",
+    "type": "menu",
+    "sortOrder": 100
+  },
+  {
+    "permissionName": "查看用户",
+    "permissionCode": "user:view",
+    "module": "system",
+    "description": "查看用户列表",
+    "type": "button",
+    "parentId": "user:manage",
+    "sortOrder": 101
+  },
+  {
+    "permissionName": "编辑用户",
+    "permissionCode": "user:edit",
+    "module": "system",
+    "description": "编辑用户信息",
+    "type": "button",
+    "parentId": "user:manage",
+    "sortOrder": 102
+  },
+  {
+    "permissionName": "删除用户",
+    "permissionCode": "user:delete",
+    "module": "system",
+    "description": "删除用户",
+    "type": "button",
+    "parentId": "user:manage",
+    "sortOrder": 103
+  },
+  {
+    "permissionName": "活动管理",
+    "permissionCode": "activity:manage",
+    "module": "content",
+    "description": "活动管理模块",
+    "type": "menu",
+    "sortOrder": 200
+  },
+  {
+    "permissionName": "查看活动",
+    "permissionCode": "activity:view",
+    "module": "content",
+    "description": "查看活动列表",
+    "type": "button",
+    "parentId": "activity:manage",
+    "sortOrder": 201
+  },
+  {
+    "permissionName": "创建活动",
+    "permissionCode": "activity:create",
+    "module": "content",
+    "description": "创建新活动",
+    "type": "button",
+    "parentId": "activity:manage",
+    "sortOrder": 202
+  },
+  {
+    "permissionName": "编辑活动",
+    "permissionCode": "activity:edit",
+    "module": "content",
+    "description": "编辑活动信息",
+    "type": "button",
+    "parentId": "activity:manage",
+    "sortOrder": 203
+  },
+  {
+    "permissionName": "删除活动",
+    "permissionCode": "activity:delete",
+    "module": "content",
+    "description": "删除活动",
+    "type": "button",
+    "parentId": "activity:manage",
+    "sortOrder": 204
+  },
+  {
+    "permissionName": "数据分析",
+    "permissionCode": "analytics:view",
+    "module": "system",
+    "description": "查看数据分析",
+    "type": "menu",
+    "sortOrder": 300
+  },
+  {
+    "permissionName": "权限管理",
+    "permissionCode": "permission:manage",
+    "module": "system",
+    "description": "权限管理模块",
+    "type": "menu",
+    "sortOrder": 400
+  }
+]

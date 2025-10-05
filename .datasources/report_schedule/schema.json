@@ -1,0 +1,101 @@
+
+{
+  "version": "2.0",
+  "fields": [
+    {
+      "name": "scheduleName",
+      "type": "string",
+      "description": "计划名称",
+      "required": true
+    },
+    {
+      "name": "frequency",
+      "type": "string",
+      "description": "频率",
+      "required": true,
+      "enum": ["daily", "weekly", "monthly"]
+    },
+    {
+      "name": "timeOfDay",
+      "type": "string",
+      "description": "生成时间",
+      "required": true
+    },
+    {
+      "name": "dayOfWeek",
+      "type": "string",
+      "description": "周几(周报时使用)",
+      "enum": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+    },
+    {
+      "name": "dayOfMonth",
+      "type": "number",
+      "description": "每月几号(月报时使用)",
+      "min": 1,
+      "max": 28
+    },
+    {
+      "name": "templateId",
+      "type": "string",
+      "description": "模板ID",
+      "required": true
+    },
+    {
+      "name": "recipients",
+      "type": "array",
+      "description": "接收人",
+      "items": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "channels",
+      "type": "array",
+      "description": "分发渠道",
+      "items": {
+        "type": "string",
+        "enum": ["email", "wechat", "in_app"]
+      },
+      "default": ["email"]
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "状态",
+      "enum": ["active", "inactive"],
+      "default": "active"
+    },
+    {
+      "name": "lastRunTime",
+      "type": "timestamp",
+      "description": "最后运行时间"
+    },
+    {
+      "name": "nextRunTime",
+      "type": "timestamp",
+      "description": "下次运行时间"
+    },
+    {
+      "name": "createdAt",
+      "type": "timestamp",
+      "description": "创建时间",
+      "autoGenerate": true
+    },
+    {
+      "name": "updatedAt",
+      "type": "timestamp",
+      "description": "更新时间",
+      "autoGenerate": true
+    }
+  ],
+  "indexes": [
+    {
+      "name": "status_index",
+      "fields": ["status"]
+    },
+    {
+      "name": "nextRunTime_index",
+      "fields": ["nextRunTime"]
+    }
+  ]
+}

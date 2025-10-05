@@ -1,0 +1,39 @@
+
+[
+  {
+    "templateName": "活动日报",
+    "templateType": "daily",
+    "contentType": "activity",
+    "fields": ["title", "date", "location", "participants", "maxParticipants", "status"],
+    "charts": ["bar", "table"],
+    "format": "pdf",
+    "status": "active"
+  },
+  {
+    "templateName": "捐赠周报",
+    "templateType": "weekly",
+    "contentType": "donation",
+    "fields": ["donorName", "donationType", "amount", "itemName", "itemValue", "donationTime", "status"],
+    "charts": ["pie", "table"],
+    "format": "excel",
+    "status": "active"
+  },
+  {
+    "templateName": "积分月报",
+    "templateType": "monthly",
+    "contentType": "points",
+    "fields": ["userId", "pointsType", "pointsValue", "recordTime", "sourceActivity", "status"],
+    "charts": ["line", "table"],
+    "format": "pdf",
+    "status": "active"
+  },
+  {
+    "templateName": "综合月报",
+    "templateType": "monthly",
+    "contentType": "composite",
+    "fields": ["activityCount", "donationAmount", "pointsEarned", "pointsSpent", "newUsers"],
+    "charts": ["bar", "line", "pie"],
+    "format": "pdf",
+    "status": "active"
+  }
+]

@@ -1,0 +1,88 @@
+
+{
+  "version": "2.0",
+  "fields": [
+    {
+      "name": "reportName",
+      "type": "string",
+      "description": "报表名称",
+      "required": true
+    },
+    {
+      "name": "templateId",
+      "type": "string",
+      "description": "模板ID",
+      "required": true
+    },
+    {
+      "name": "scheduleId",
+      "type": "string",
+      "description": "计划ID"
+    },
+    {
+      "name": "periodStart",
+      "type": "timestamp",
+      "description": "统计开始时间",
+      "required": true
+    },
+    {
+      "name": "periodEnd",
+      "type": "timestamp",
+      "description": "统计结束时间",
+      "required": true
+    },
+    {
+      "name": "fileUrl",
+      "type": "string",
+      "description": "文件URL",
+      "required": true
+    },
+    {
+      "name": "fileFormat",
+      "type": "string",
+      "description": "文件格式",
+      "required": true,
+      "enum": ["pdf", "excel", "html", "image"]
+    },
+    {
+      "name": "fileSize",
+      "type": "number",
+      "description": "文件大小(KB)"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "状态",
+      "enum": ["generating", "completed", "failed", "distributed"],
+      "default": "generating"
+    },
+    {
+      "name": "distributionStatus",
+      "type": "string",
+      "description": "分发状态",
+      "enum": ["pending", "partial", "completed", "failed"]
+    },
+    {
+      "name": "createdAt",
+      "type": "timestamp",
+      "description": "创建时间",
+      "autoGenerate": true
+    },
+    {
+      "name": "updatedAt",
+      "type": "timestamp",
+      "description": "更新时间",
+      "autoGenerate": true
+    }
+  ],
+  "indexes": [
+    {
+      "name": "period_index",
+      "fields": ["periodStart", "periodEnd"]
+    },
+    {
+      "name": "status_index",
+      "fields": ["status"]
+    }
+  ]
+}

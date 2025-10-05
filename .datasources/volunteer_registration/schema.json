@@ -1,0 +1,55 @@
+
+{
+  "name": "volunteer_registration",
+  "title": "志愿者报名",
+  "schemas": [
+    {
+      "name": "userId",
+      "title": "用户ID",
+      "type": "String"
+    },
+    {
+      "name": "activityId",
+      "title": "活动ID",
+      "type": "String"
+    },
+    {
+      "name": "registrationTime",
+      "title": "报名时间",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    },
+    {
+      "name": "checkInStatus",
+      "title": "签到状态",
+      "type": "Boolean"
+    },
+    {
+      "name": "checkInTime",
+      "title": "签到时间",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    },
+    {
+      "name": "pointsAwarded",
+      "title": "获得积分",
+      "type": "Number"
+    },
+    {
+      "name": "activityTitle",
+      "title": "活动标题",
+      "type": "String"
+    },
+    {
+      "name": "activityPoints",
+      "title": "活动积分",
+      "type": "Number"
+    },
+    {
+      "name": "status",
+      "title": "报名状态",
+      "type": "String"
+    }
+  ]
+}
+  

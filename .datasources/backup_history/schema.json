@@ -1,0 +1,79 @@
+
+{
+  "version": "2.0",
+  "fields": [
+    {
+      "name": "backupName",
+      "type": "string",
+      "description": "备份名称",
+      "required": true
+    },
+    {
+      "name": "planId",
+      "type": "string",
+      "description": "计划ID"
+    },
+    {
+      "name": "collections",
+      "type": "array",
+      "description": "备份的数据集合",
+      "items": {
+        "type": "string"
+      },
+      "required": true
+    },
+    {
+      "name": "backupTime",
+      "type": "timestamp",
+      "description": "备份时间",
+      "required": true
+    },
+    {
+      "name": "fileUrl",
+      "type": "string",
+      "description": "文件URL",
+      "required": true
+    },
+    {
+      "name": "fileSize",
+      "type": "number",
+      "description": "文件大小(KB)"
+    },
+    {
+      "name": "storageType",
+      "type": "string",
+      "description": "存储类型",
+      "enum": ["cloud", "local"],
+      "required": true
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "状态",
+      "enum": ["generating", "completed", "failed"],
+      "default": "generating"
+    },
+    {
+      "name": "createdAt",
+      "type": "timestamp",
+      "description": "创建时间",
+      "autoGenerate": true
+    },
+    {
+      "name": "updatedAt",
+      "type": "timestamp",
+      "description": "更新时间",
+      "autoGenerate": true
+    }
+  ],
+  "indexes": [
+    {
+      "name": "backupTime_index",
+      "fields": ["backupTime"]
+    },
+    {
+      "name": "status_index",
+      "fields": ["status"]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+
+{
+  "version": "2.0",
+  "fields": [
+    {
+      "name": "userId",
+      "type": "string",
+      "description": "用户ID",
+      "required": true
+    },
+    {
+      "name": "notificationId",
+      "type": "string",
+      "description": "通知ID",
+      "required": true
+    },
+    {
+      "name": "readStatus",
+      "type": "boolean",
+      "description": "阅读状态",
+      "default": false
+    },
+    {
+      "name": "readTime",
+      "type": "timestamp",
+      "description": "阅读时间"
+    },
+    {
+      "name": "channel",
+      "type": "string",
+      "description": "接收渠道",
+      "enum": ["in_app", "wechat", "sms", "email"]
+    },
+    {
+      "name": "deliveryStatus",
+      "type": "string",
+      "description": "送达状态",
+      "enum": ["pending", "delivered", "failed", "read"],
+      "default": "pending"
+    },
+    {
+      "name": "deliveryTime",
+      "type": "timestamp",
+      "description": "送达时间"
+    },
+    {
+      "name": "createdAt",
+      "type": "timestamp",
+      "description": "创建时间",
+      "autoGenerate": true
+    },
+    {
+      "name": "updatedAt",
+      "type": "timestamp",
+      "description": "更新时间",
+      "autoGenerate": true
+    }
+  ],
+  "indexes": [
+    {
+      "name": "user_notification_index",
+      "fields": ["userId", "notificationId"],
+      "unique": true
+    },
+    {
+      "name": "user_read_index",
+      "fields": ["userId", "readStatus"]
+    }
+  ]
+}

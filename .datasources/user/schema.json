@@ -1,0 +1,74 @@
+
+{
+  "name": "user",
+  "title": "用户管理",
+  "schemas": [
+    {
+      "name": "name",
+      "title": "姓名",
+      "type": "String"
+    },
+    {
+      "name": "phone",
+      "title": "手机号",
+      "type": "String"
+    },
+    {
+      "name": "openid",
+      "title": "微信openid",
+      "type": "String"
+    },
+    {
+      "name": "avatarUrl",
+      "title": "头像",
+      "type": "Image"
+    },
+    {
+      "name": "registrationTime",
+      "title": "注册时间",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    },
+    {
+      "name": "userType",
+      "title": "用户类型",
+      "type": "String"
+    },
+    {
+      "name": "pointsBalance",
+      "title": "积分余额",
+      "type": "Number"
+    },
+    {
+      "name": "totalActivities",
+      "title": "总活动数",
+      "type": "Number"
+    },
+    {
+      "name": "serviceHours",
+      "title": "服务时长",
+      "type": "Number"
+    },
+    {
+      "name": "donationCount",
+      "title": "捐赠次数",
+      "type": "Number"
+    },
+    {
+      "name": "rating",
+      "title": "评分",
+      "type": "Number"
+    },
+    {
+      "name": "experienceYears",
+      "title": "经验年限",
+      "type": "Number"
+    },
+    {
+      "name": "status",
+      "title": "状态",
+      "type": "String"
+    }
+  ]
+}
+  

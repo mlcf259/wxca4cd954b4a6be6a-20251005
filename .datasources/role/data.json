@@ -1,0 +1,38 @@
+
+[
+  {
+    "roleName": "超级管理员",
+    "roleCode": "super_admin",
+    "description": "系统最高权限管理员",
+    "isSystem": true,
+    "status": "active"
+  },
+  {
+    "roleName": "内容管理员",
+    "roleCode": "content_admin",
+    "description": "管理内容和活动",
+    "isSystem": false,
+    "status": "active"
+  },
+  {
+    "roleName": "志愿者",
+    "roleCode": "volunteer",
+    "description": "参与活动的志愿者",
+    "isSystem": true,
+    "status": "active"
+  },
+  {
+    "roleName": "捐赠者",
+    "roleCode": "donor",
+    "description": "进行捐赠的用户",
+    "isSystem": true,
+    "status": "active"
+  },
+  {
+    "roleName": "普通用户",
+    "roleCode": "user",
+    "description": "普通注册用户",
+    "isSystem": true,
+    "status": "active"
+  }
+]

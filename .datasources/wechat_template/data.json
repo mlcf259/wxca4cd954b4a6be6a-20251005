@@ -1,0 +1,193 @@
+
+[
+  {
+    "templateName": "活动提醒通知",
+    "templateId": "AT0001",
+    "templateType": "activity",
+    "content": "{{first.DATA}}\n活动名称：{{keyword1.DATA}}\n活动时间：{{keyword2.DATA}}\n活动地点：{{keyword3.DATA}}\n{{remark.DATA}}",
+    "example": "您好，您报名的活动即将开始\n活动名称：社区环保清洁活动\n活动时间：2025-10-10 09:00\n活动地点：朝阳公园\n请准时参加，感谢您的支持！",
+    "fields": [
+      {
+        "name": "first",
+        "field": "first",
+        "color": "#173177"
+      },
+      {
+        "name": "keyword1",
+        "field": "keyword1",
+        "color": "#173177"
+      },
+      {
+        "name": "keyword2",
+        "field": "keyword2",
+        "color": "#173177"
+      },
+      {
+        "name": "keyword3",
+        "field": "keyword3",
+        "color": "#173177"
+      },
+      {
+        "name": "remark",
+        "field": "remark",
+        "color": "#173177"
+      }
+    ],
+    "miniprogram": {
+      "appid": "wx1234567890abcdef",
+      "pagepath": "pages/activity-detail/activity-detail?id="
+    },
+    "status": "active"
+  },
+  {
+    "templateName": "积分变动通知",
+    "templateId": "PT0001",
+    "templateType": "points",
+    "content": "{{first.DATA}}\n变动类型：{{keyword1.DATA}}\n变动积分：{{keyword2.DATA}}\n当前积分：{{keyword3.DATA}}\n{{remark.DATA}}",
+    "example": "积分变动提醒\n变动类型：活动参与奖励\n变动积分：+50\n当前积分：1250\n感谢您的参与！",
+    "fields": [
+      {
+        "name": "first",
+        "field": "first",
+        "color": "#173177"
+      },
+      {
+        "name": "keyword1",
+        "field": "keyword1",
+        "color": "#173177"
+      },
+      {
+        "name": "keyword2",
+        "field": "keyword2",
+        "color": "#173177"
+      },
+      {
+        "name": "keyword3",
+        "field": "keyword3",
+        "color": "#173177"
+      },
+      {
+        "name": "remark",
+        "field": "remark",
+        "color": "#173177"
+      }
+    ],
+    "miniprogram": {
+      "appid": "wx1234567890abcdef",
+      "pagepath": "pages/integral/integral"
+    },
+    "status": "active"
+  },
+  {
+    "templateName": "捐赠确认通知",
+    "templateId": "DT0001",
+    "templateType": "donation",
+    "content": "{{first.DATA}}\n捐赠项目：{{keyword1.DATA}}\n捐赠金额：{{keyword2.DATA}}\n捐赠时间：{{keyword3.DATA}}\n{{remark.DATA}}",
+    "example": "捐赠成功通知\n捐赠项目：希望小学建设\n捐赠金额：¥500.00\n捐赠时间：2025-10-10 14:30\n感谢您的爱心捐赠！",
+    "fields": [
+      {
+        "name": "first",
+        "field": "first",
+        "color": "#173177"
+      },
+      {
+        "name": "keyword1",
+        "field": "keyword1",
+        "color": "#173177"
+      },
+      {
+        "name": "keyword2",
+        "field": "keyword2",
+        "color": "#173177"
+      },
+      {
+        "name": "keyword3",
+        "field": "keyword3",
+        "color": "#173177"
+      },
+      {
+        "name": "remark",
+        "field": "remark",
+        "color": "#173177"
+      }
+    ],
+    "miniprogram": {
+      "appid": "wx1234567890abcdef",
+      "pagepath": "pages/donation/donation"
+    },
+    "status": "active"
+  },
+  {
+    "templateName": "系统公告通知",
+    "templateId": "ST0001",
+    "templateType": "system",
+    "content": "{{first.DATA}}\n公告标题：{{keyword1.DATA}}\n发布时间：{{keyword2.DATA}}\n{{remark.DATA}}",
+    "example": "系统公告\n公告标题：系统维护通知\n发布时间：2025-10-15 02:00-06:00\n系统将于上述时间进行维护，请提前做好准备。",
+    "fields": [
+      {
+        "name": "first",
+        "field": "first",
+        "color": "#173177"
+      },
+      {
+        "name": "keyword1",
+        "field": "keyword1",
+        "color": "#173177"
+      },
+      {
+        "name": "keyword2",
+        "field": "keyword2",
+        "color": "#173177"
+      },
+      {
+        "name": "remark",
+        "field": "remark",
+        "color": "#173177"
+      }
+    ],
+    "miniprogram": {
+      "appid": "wx1234567890abcdef",
+      "pagepath": "pages/index/index"
+    },
+    "status": "active"
+  },
+  {
+    "templateName": "积分兑换通知",
+    "templateId": "ET0001",
+    "templateType": "exchange",
+    "content": "{{first.DATA}}\n兑换商品：{{keyword1.DATA}}\n消耗积分：{{keyword2.DATA}}\n兑换时间：{{keyword3.DATA}}\n{{remark.DATA}}",
+    "example": "积分兑换成功\n兑换商品：保温杯\n消耗积分：300\n兑换时间：2025-10-10 15:45\n商品将尽快为您发货，请耐心等待。",
+    "fields": [
+      {
+        "name": "first",
+        "field": "first",
+        "color": "#173177"
+      },
+      {
+        "name": "keyword1",
+        "field": "keyword1",
+        "color": "#173177"
+      },
+      {
+        "name": "keyword2",
+        "field": "keyword2",
+        "color": "#173177"
+      },
+      {
+        "name": "keyword3",
+        "field": "keyword3",
+        "color": "#173177"
+      },
+      {
+        "name": "remark",
+        "field": "remark",
+        "color": "#173177"
+      }
+    ],
+    "miniprogram": {
+      "appid": "wx1234567890abcdef",
+      "pagepath": "pages/integral/integral"
+    },
+    "status": "active"
+  }
+]

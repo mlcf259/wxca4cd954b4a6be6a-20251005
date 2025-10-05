@@ -1,0 +1,81 @@
+
+{
+  "name": "points_exchange",
+  "title": "积分兑换",
+  "schemas": [
+    {
+      "name": "userId",
+      "title": "用户ID",
+      "type": "String"
+    },
+    {
+      "name": "productId",
+      "title": "商品ID",
+      "type": "String"
+    },
+    {
+      "name": "productName",
+      "title": "商品名称",
+      "type": "String"
+    },
+    {
+      "name": "pointsCost",
+      "title": "消耗积分",
+      "type": "Number"
+    },
+    {
+      "name": "exchangeTime",
+      "title": "兑换时间",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    },
+    {
+      "name": "status",
+      "title": "兑换状态",
+      "type": "String"
+    },
+    {
+      "name": "quantity",
+      "title": "兑换数量",
+      "type": "Number"
+    },
+    {
+      "name": "recipientName",
+      "title": "收货人姓名",
+      "type": "String"
+    },
+    {
+      "name": "recipientPhone",
+      "title": "收货人电话",
+      "type": "String"
+    },
+    {
+      "name": "shippingAddress",
+      "title": "收货地址",
+      "type": "MultiLineString"
+    },
+    {
+      "name": "trackingNumber",
+      "title": "物流单号",
+      "type": "String"
+    },
+    {
+      "name": "shippingTime",
+      "title": "发货时间",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    },
+    {
+      "name": "deliveryTime",
+      "title": "收货时间",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    },
+    {
+      "name": "notes",
+      "title": "备注",
+      "type": "MultiLineString"
+    }
+  ]
+}
+  

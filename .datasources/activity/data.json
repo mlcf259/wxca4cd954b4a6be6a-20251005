@@ -1,0 +1,58 @@
+
+[
+  {
+    "_id": "1",
+    "title": "社区环保清洁活动",
+    "date": "2025-10-10 09:00",
+    "location": "朝阳公园",
+    "points": 50,
+    "participants": 25,
+    "maxParticipants": 50,
+    "status": "ongoing",
+    "image": "https://images.unsplash.com/photo-1577720643272-265f0936742a?w=500&h=300&fit=crop",
+    "description": "参与社区环境清洁，共建美好家园",
+    "organizer": "绿色环保协会",
+    "contact": "张老师 13800138000",
+    "requirements": "自备手套和水杯，穿着舒适的运动服装",
+    "schedule": ["09:00-09:30 集合签到", "09:30-10:00 活动介绍和安全培训", "10:00-11:30 环境清洁活动", "11:30-12:00 总结分享"],
+    "createdAt": 1738605600000,
+    "updatedAt": 1738605600000
+  },
+  {
+    "_id": "2",
+    "title": "敬老院志愿服务",
+    "date": "2025-10-15 14:00",
+    "location": "幸福敬老院",
+    "points": 80,
+    "participants": 18,
+    "maxParticipants": 30,
+    "status": "upcoming",
+    "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&h=300&fit=crop",
+    "description": "为老人提供陪伴和帮助",
+    "organizer": "爱心志愿者协会",
+    "contact": "李老师 13900139000",
+    "requirements": "有爱心和耐心，会简单护理知识者优先",
+    "schedule": ["14:00-14:30 集合签到", "14:30-15:30 陪伴老人聊天", "15:30-16:30 协助老人活动", "16:30-17:00 总结分享"],
+    "createdAt": 1738605600000,
+    "updatedAt": 1738605600000
+  },
+  {
+    "_id": "3",
+    "title": "儿童图书馆整理",
+    "date": "2025-10-20 10:00",
+    "location": "市图书馆",
+    "points": 40,
+    "participants": 12,
+    "maxParticipants": 20,
+    "status": "upcoming",
+    "image": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=500&h=300&fit=crop",
+    "description": "整理图书，营造良好阅读环境",
+    "organizer": "市图书馆",
+    "contact": "王老师 13700137000",
+    "requirements": "细心认真，爱护图书",
+    "schedule": ["10:00-10:30 集合签到", "10:30-11:30 图书分类整理", "11:30-12:00 书架清洁", "12:00-12:30 总结分享"],
+    "createdAt": 1738605600000,
+    "updatedAt": 1738605600000
+  }
+]
+  

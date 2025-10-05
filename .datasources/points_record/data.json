@@ -1,0 +1,69 @@
+
+[
+  {
+    "_id": "points_001",
+    "userId": "user_001",
+    "pointsType": "activity",
+    "pointsValue": 50,
+    "recordTime": 1738605600000,
+    "sourceActivity": "社区环保清洁活动",
+    "activityId": "1",
+    "description": "参与社区环保清洁活动获得积分",
+    "status": "completed",
+    "createdAt": 1738605600000,
+    "updatedAt": 1738605600000
+  },
+  {
+    "_id": "points_002",
+    "userId": "user_001",
+    "pointsType": "activity",
+    "pointsValue": 80,
+    "recordTime": 1738612800000,
+    "sourceActivity": "敬老院志愿服务",
+    "activityId": "2",
+    "description": "参与敬老院志愿服务获得积分",
+    "status": "completed",
+    "createdAt": 1738612800000,
+    "updatedAt": 1738612800000
+  },
+  {
+    "_id": "points_003",
+    "userId": "user_001",
+    "pointsType": "activity",
+    "pointsValue": 40,
+    "recordTime": 1738692000000,
+    "sourceActivity": "图书馆整理",
+    "activityId": "3",
+    "description": "参与图书馆整理活动获得积分",
+    "status": "completed",
+    "createdAt": 1738692000000,
+    "updatedAt": 1738692000000
+  },
+  {
+    "_id": "points_004",
+    "userId": "user_002",
+    "pointsType": "activity",
+    "pointsValue": 50,
+    "recordTime": 1738609200000,
+    "sourceActivity": "社区环保清洁活动",
+    "activityId": "1",
+    "description": "参与社区环保清洁活动获得积分",
+    "status": "completed",
+    "createdAt": 1738609200000,
+    "updatedAt": 1738609200000
+  },
+  {
+    "_id": "points_005",
+    "userId": "user_003",
+    "pointsType": "donation",
+    "pointsValue": 100,
+    "recordTime": 1738778400000,
+    "sourceActivity": "物资捐赠",
+    "activityId": null,
+    "description": "捐赠学习用品获得积分",
+    "status": "completed",
+    "createdAt": 1738778400000,
+    "updatedAt": 1738778400000
+  }
+]
+  

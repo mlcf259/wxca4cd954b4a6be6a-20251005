@@ -1,0 +1,36 @@
+
+{
+  "version": "2.0",
+  "fields": [
+    {
+      "name": "userId",
+      "type": "string",
+      "description": "用户ID",
+      "required": true
+    },
+    {
+      "name": "roleId",
+      "type": "string",
+      "description": "角色ID",
+      "required": true
+    },
+    {
+      "name": "createdAt",
+      "type": "timestamp",
+      "description": "创建时间",
+      "autoGenerate": true
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "创建人"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "user_role_index",
+      "fields": ["userId", "roleId"],
+      "unique": true
+    }
+  ]
+}

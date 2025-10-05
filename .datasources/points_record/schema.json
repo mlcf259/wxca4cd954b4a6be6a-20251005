@@ -1,0 +1,49 @@
+
+{
+  "name": "points_record",
+  "title": "积分记录",
+  "schemas": [
+    {
+      "name": "userId",
+      "title": "用户ID",
+      "type": "String"
+    },
+    {
+      "name": "pointsType",
+      "title": "积分类型",
+      "type": "String"
+    },
+    {
+      "name": "pointsValue",
+      "title": "积分值",
+      "type": "Number"
+    },
+    {
+      "name": "recordTime",
+      "title": "记录时间",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    },
+    {
+      "name": "sourceActivity",
+      "title": "来源活动",
+      "type": "String"
+    },
+    {
+      "name": "activityId",
+      "title": "活动ID",
+      "type": "String"
+    },
+    {
+      "name": "description",
+      "title": "描述",
+      "type": "String"
+    },
+    {
+      "name": "status",
+      "title": "状态",
+      "type": "String"
+    }
+  ]
+}
+  

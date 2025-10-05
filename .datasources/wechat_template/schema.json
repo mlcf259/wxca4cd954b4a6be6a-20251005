@@ -1,0 +1,99 @@
+
+{
+  "version": "2.0",
+  "fields": [
+    {
+      "name": "templateName",
+      "type": "string",
+      "description": "模板名称",
+      "required": true
+    },
+    {
+      "name": "templateId",
+      "type": "string",
+      "description": "微信模板ID",
+      "required": true,
+      "unique": true
+    },
+    {
+      "name": "templateType",
+      "type": "string",
+      "description": "模板类型",
+      "required": true,
+      "enum": ["activity", "points", "donation", "system", "exchange"]
+    },
+    {
+      "name": "content",
+      "type": "string",
+      "description": "模板内容",
+      "required": true
+    },
+    {
+      "name": "example",
+      "type": "string",
+      "description": "示例内容"
+    },
+    {
+      "name": "fields",
+      "type": "array",
+      "description": "模板字段",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "field": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "miniprogram",
+      "type": "object",
+      "description": "小程序跳转配置",
+      "properties": {
+        "appid": {
+          "type": "string"
+        },
+        "pagepath": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "状态",
+      "enum": ["active", "inactive", "testing"],
+      "default": "active"
+    },
+    {
+      "name": "createdAt",
+      "type": "timestamp",
+      "description": "创建时间",
+      "autoGenerate": true
+    },
+    {
+      "name": "updatedAt",
+      "type": "timestamp",
+      "description": "更新时间",
+      "autoGenerate": true
+    }
+  ],
+  "indexes": [
+    {
+      "name": "templateId_index",
+      "fields": ["templateId"],
+      "unique": true
+    },
+    {
+      "name": "templateType_index",
+      "fields": ["templateType"]
+    }
+  ]
+}

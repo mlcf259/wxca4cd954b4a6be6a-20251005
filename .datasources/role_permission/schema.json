@@ -1,0 +1,36 @@
+
+{
+  "version": "2.0",
+  "fields": [
+    {
+      "name": "roleId",
+      "type": "string",
+      "description": "角色ID",
+      "required": true
+    },
+    {
+      "name": "permissionId",
+      "type": "string",
+      "description": "权限ID",
+      "required": true
+    },
+    {
+      "name": "createdAt",
+      "type": "timestamp",
+      "description": "创建时间",
+      "autoGenerate": true
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "创建人"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "role_permission_index",
+      "fields": ["roleId", "permissionId"],
+      "unique": true
+    }
+  ]
+}

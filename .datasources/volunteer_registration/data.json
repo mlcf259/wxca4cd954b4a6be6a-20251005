@@ -1,0 +1,46 @@
+
+[
+  {
+    "_id": "reg_001",
+    "userId": "user_001",
+    "activityId": "1",
+    "registrationTime": 1738605600000,
+    "checkInStatus": true,
+    "checkInTime": 1738612800000,
+    "pointsAwarded": 50,
+    "activityTitle": "社区环保清洁活动",
+    "activityPoints": 50,
+    "status": "completed",
+    "createdAt": 1738605600000,
+    "updatedAt": 1738612800000
+  },
+  {
+    "_id": "reg_002",
+    "userId": "user_002",
+    "activityId": "1",
+    "registrationTime": 1738609200000,
+    "checkInStatus": false,
+    "checkInTime": null,
+    "pointsAwarded": 0,
+    "activityTitle": "社区环保清洁活动",
+    "activityPoints": 50,
+    "status": "registered",
+    "createdAt": 1738609200000,
+    "updatedAt": 1738609200000
+  },
+  {
+    "_id": "reg_003",
+    "userId": "user_003",
+    "activityId": "2",
+    "registrationTime": 1738692000000,
+    "checkInStatus": false,
+    "checkInTime": null,
+    "pointsAwarded": 0,
+    "activityTitle": "敬老院志愿服务",
+    "activityPoints": 80,
+    "status": "registered",
+    "createdAt": 1738692000000,
+    "updatedAt": 1738692000000
+  }
+]
+  

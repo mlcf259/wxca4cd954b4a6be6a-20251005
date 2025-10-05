@@ -1,0 +1,134 @@
+
+{
+  "version": "2.0",
+  "fields": [
+    {
+      "name": "title",
+      "type": "string",
+      "description": "通知标题",
+      "required": true
+    },
+    {
+      "name": "content",
+      "type": "string",
+      "description": "通知内容",
+      "required": true
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "description": "通知类型",
+      "required": true,
+      "enum": ["system", "activity", "points", "donation", "exchange"]
+    },
+    {
+      "name": "subType",
+      "type": "string",
+      "description": "通知子类型",
+      "enum": ["announcement", "reminder", "change", "confirmation", "status_update"]
+    },
+    {
+      "name": "targetUsers",
+      "type": "array",
+      "description": "目标用户",
+      "items": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "targetType",
+      "type": "string",
+      "description": "目标类型",
+      "enum": ["all", "specific", "role_based", "condition_based"]
+    },
+    {
+      "name": "relatedId",
+      "type": "string",
+      "description": "关联ID"
+    },
+    {
+      "name": "relatedType",
+      "type": "string",
+      "description": "关联类型",
+      "enum": ["activity", "donation", "exchange", "user"]
+    },
+    {
+      "name": "priority",
+      "type": "string",
+      "description": "优先级",
+      "enum": ["low", "medium", "high", "urgent"],
+      "default": "medium"
+    },
+    {
+      "name": "sendTime",
+      "type": "timestamp",
+      "description": "发送时间",
+      "autoGenerate": true
+    },
+    {
+      "name": "expireTime",
+      "type": "timestamp",
+      "description": "过期时间"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "状态",
+      "enum": ["draft", "scheduled", "sending", "sent", "failed", "cancelled"],
+      "default": "draft"
+    },
+    {
+      "name": "channels",
+      "type": "array",
+      "description": "推送渠道",
+      "items": {
+        "type": "string",
+        "enum": ["in_app", "wechat", "sms", "email"]
+      },
+      "default": ["in_app"]
+    },
+    {
+      "name": "readCount",
+      "type": "number",
+      "description": "已读数量",
+      "default": 0
+    },
+    {
+      "name": "totalCount",
+      "type": "number",
+      "description": "总发送数量",
+      "default": 0
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "创建人"
+    },
+    {
+      "name": "createdAt",
+      "type": "timestamp",
+      "description": "创建时间",
+      "autoGenerate": true
+    },
+    {
+      "name": "updatedAt",
+      "type": "timestamp",
+      "description": "更新时间",
+      "autoGenerate": true
+    }
+  ],
+  "indexes": [
+    {
+      "name": "type_index",
+      "fields": ["type"]
+    },
+    {
+      "name": "status_index",
+      "fields": ["status"]
+    },
+    {
+      "name": "sendTime_index",
+      "fields": ["sendTime"]
+    }
+  ]
+}

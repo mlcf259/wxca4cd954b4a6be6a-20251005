@@ -1,0 +1,64 @@
+
+{
+  "name": "donation_ledger",
+  "title": "捐赠账本",
+  "schemas": [
+    {
+      "name": "donorName",
+      "title": "捐赠人姓名",
+      "type": "String"
+    },
+    {
+      "name": "donorContact",
+      "title": "捐赠人联系方式",
+      "type": "String"
+    },
+    {
+      "name": "donationType",
+      "title": "捐赠类型",
+      "type": "String"
+    },
+    {
+      "name": "amount",
+      "title": "捐赠金额",
+      "type": "Number"
+    },
+    {
+      "name": "itemName",
+      "title": "物品名称",
+      "type": "String"
+    },
+    {
+      "name": "itemValue",
+      "title": "物品价值",
+      "type": "Number"
+    },
+    {
+      "name": "purpose",
+      "title": "捐赠用途",
+      "type": "String"
+    },
+    {
+      "name": "donationTime",
+      "title": "捐赠时间",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    },
+    {
+      "name": "status",
+      "title": "捐赠状态",
+      "type": "String"
+    },
+    {
+      "name": "isPublic",
+      "title": "公开状态",
+      "type": "Boolean"
+    },
+    {
+      "name": "notes",
+      "title": "备注",
+      "type": "MultiLineString"
+    }
+  ]
+}
+  

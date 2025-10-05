@@ -1,0 +1,57 @@
+
+{
+  "version": "2.0",
+  "fields": [
+    {
+      "name": "roleName",
+      "type": "string",
+      "description": "角色名称",
+      "required": true,
+      "unique": true
+    },
+    {
+      "name": "roleCode",
+      "type": "string",
+      "description": "角色代码",
+      "required": true,
+      "unique": true
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "角色描述"
+    },
+    {
+      "name": "isSystem",
+      "type": "boolean",
+      "description": "是否系统角色",
+      "default": false
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "角色状态",
+      "default": "active",
+      "enum": ["active", "inactive"]
+    },
+    {
+      "name": "createdAt",
+      "type": "timestamp",
+      "description": "创建时间",
+      "autoGenerate": true
+    },
+    {
+      "name": "updatedAt",
+      "type": "timestamp",
+      "description": "更新时间",
+      "autoGenerate": true
+    }
+  ],
+  "indexes": [
+    {
+      "name": "roleCode_index",
+      "fields": ["roleCode"],
+      "unique": true
+    }
+  ]
+}

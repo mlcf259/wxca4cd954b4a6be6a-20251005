@@ -1,0 +1,77 @@
+
+{
+  "name": "activity",
+  "title": "活动",
+  "schemas": [
+    {
+      "name": "title",
+      "title": "活动标题",
+      "type": "String"
+    },
+    {
+      "name": "date",
+      "title": "活动时间",
+      "type": "DateTime",
+      "format": "string"
+    },
+    {
+      "name": "location",
+      "title": "活动地点",
+      "type": "String"
+    },
+    {
+      "name": "points",
+      "title": "积分奖励",
+      "type": "Number"
+    },
+    {
+      "name": "participants",
+      "title": "当前参与人数",
+      "type": "Number"
+    },
+    {
+      "name": "maxParticipants",
+      "title": "最大参与人数",
+      "type": "Number"
+    },
+    {
+      "name": "status",
+      "title": "活动状态",
+      "type": "String"
+    },
+    {
+      "name": "image",
+      "title": "活动图片",
+      "type": "Image"
+    },
+    {
+      "name": "description",
+      "title": "活动描述",
+      "type": "MultiLineString"
+    },
+    {
+      "name": "organizer",
+      "title": "主办方",
+      "type": "String"
+    },
+    {
+      "name": "contact",
+      "title": "联系方式",
+      "type": "String"
+    },
+    {
+      "name": "requirements",
+      "title": "活动要求",
+      "type": "MultiLineString"
+    },
+    {
+      "name": "schedule",
+      "title": "活动安排",
+      "type": "Array",
+      "items": {
+        "type": "String"
+      }
+    }
+  ]
+}
+  

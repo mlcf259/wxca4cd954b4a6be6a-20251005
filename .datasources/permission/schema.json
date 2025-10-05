@@ -1,0 +1,78 @@
+
+{
+  "version": "2.0",
+  "fields": [
+    {
+      "name": "permissionName",
+      "type": "string",
+      "description": "权限名称",
+      "required": true
+    },
+    {
+      "name": "permissionCode",
+      "type": "string",
+      "description": "权限代码",
+      "required": true,
+      "unique": true
+    },
+    {
+      "name": "module",
+      "type": "string",
+      "description": "所属模块",
+      "required": true
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "权限描述"
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "description": "权限类型",
+      "default": "menu",
+      "enum": ["menu", "button", "api"]
+    },
+    {
+      "name": "parentId",
+      "type": "string",
+      "description": "父权限ID"
+    },
+    {
+      "name": "sortOrder",
+      "type": "number",
+      "description": "排序顺序",
+      "default": 0
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "权限状态",
+      "default": "active",
+      "enum": ["active", "inactive"]
+    },
+    {
+      "name": "createdAt",
+      "type": "timestamp",
+      "description": "创建时间",
+      "autoGenerate": true
+    },
+    {
+      "name": "updatedAt",
+      "type": "timestamp",
+      "description": "更新时间",
+      "autoGenerate": true
+    }
+  ],
+  "indexes": [
+    {
+      "name": "permissionCode_index",
+      "fields": ["permissionCode"],
+      "unique": true
+    },
+    {
+      "name": "module_index",
+      "fields": ["module"]
+    }
+  ]
+}
