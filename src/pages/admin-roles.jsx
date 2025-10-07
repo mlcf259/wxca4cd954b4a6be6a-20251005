@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 // @ts-ignore;
 import { Card, CardContent, CardHeader, CardTitle, Button, useToast, Table, TableHeader, TableRow, TableHead, TableBody, TableCell, Badge, Input } from '@/components/ui';
 // @ts-ignore;
-import { Plus, Search, Edit, Trash2, Shield, RefreshCw, Loader } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, Shield, RefreshCw, Loader, AlertCircle } from 'lucide-react';
 
 import { AdminLayout } from '@/components/AdminLayout';
 export default function AdminRolesPage(props) {
@@ -46,10 +46,10 @@ export default function AdminRolesPage(props) {
       }
     } catch (error) {
       console.error('获取角色数据失败:', error);
-      setError('获取角色数据失败，请稍后重试');
+      setError(`获取角色数据失败: ${error.message || '请检查网络连接和数据源配置'}`);
       toast({
         title: "数据加载失败",
-        description: "无法获取角色列表，请检查网络连接",
+        description: "无法获取角色列表，请检查网络连接或联系管理员",
         variant: "destructive"
       });
     } finally {
@@ -107,12 +107,23 @@ export default function AdminRolesPage(props) {
   };
   if (error) {
     return <AdminLayout activeTab={activeTab} onTabChange={handleTabChange} onLogout={handleLogout}>
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-          <div className="text-center">
-            <p className="text-red-600 mb-4">{error}</p>
-            <Button onClick={fetchRoles} className="bg-blue-600 hover:bg-blue-700">
-              重试
-            </Button>
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+          <div className="text-center max-w-md">
+            <AlertCircle className="w-16 h-16 mx-auto mb-4 text-red-500" />
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">数据加载失败</h3>
+            <p className="text-gray-600 mb-4">{error}</p>
+            <div className="space-y-2">
+              <Button onClick={fetchRoles} className="w-full bg-blue-600 hover:bg-blue-700">
+                <RefreshCw className="w-4 h-4 mr-2" />
+                重试加载
+              </Button>
+              <Button variant="outline" onClick={() => $w.utils.navigateTo({
+              pageId: 'admin-dashboard',
+              params: {}
+            })} className="w-full">
+                返回仪表盘
+              </Button>
+            </div>
           </div>
         </div>
       </AdminLayout>;
@@ -126,11 +137,11 @@ export default function AdminRolesPage(props) {
             <p className="text-gray-600">管理系统角色和权限</p>
           </div>
           <div className="flex items-center space-x-2">
-            <Button variant="outline" onClick={fetchRoles}>
+            <Button variant="outline" onClick={fetchRoles} disabled={loading}>
               <RefreshCw className="w-4 h-4 mr-2" />
               刷新
             </Button>
-            <Button className="bg-blue-600 hover:bg-blue-700">
+            <Button className="bg-blue-600 hover:bg-blue-700" disabled={loading}>
               <Plus className="w-4 h-4 mr-2" />
               添加角色
             </Button>
@@ -143,7 +154,7 @@ export default function AdminRolesPage(props) {
             <div className="flex items-center space-x-4">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                <Input placeholder="搜索角色名称或代码..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="pl-10" />
+                <Input placeholder="搜索角色名称或代码..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="pl-10" disabled={loading} />
               </div>
             </div>
           </CardContent>
@@ -157,7 +168,7 @@ export default function AdminRolesPage(props) {
           <CardContent>
             {loading ? <div className="text-center py-12">
                 <Loader className="w-8 h-8 mx-auto mb-4 text-blue-600 animate-spin" />
-                <p className="text-gray-600">加载中...</p>
+                <p className="text-gray-600">正在加载角色数据...</p>
               </div> : <div className="overflow-x-auto">
                 <Table>
                   <TableHeader>
@@ -175,7 +186,7 @@ export default function AdminRolesPage(props) {
                     {filteredRoles.map(role => <TableRow key={role._id}>
                         <TableCell className="font-medium">{role.roleName}</TableCell>
                         <TableCell className="font-mono text-sm">{role.roleCode}</TableCell>
-                        <TableCell className="text-sm text-gray-600">{role.description}</TableCell>
+                        <TableCell className="text-sm text-gray-600">{role.description || '-'}</TableCell>
                         <TableCell>{getSystemBadge(role.isSystem)}</TableCell>
                         <TableCell>{getStatusBadge(role.status)}</TableCell>
                         <TableCell>{role.createdAt ? new Date(role.createdAt).toLocaleDateString() : '-'}</TableCell>
@@ -199,13 +210,16 @@ export default function AdminRolesPage(props) {
                 {filteredRoles.length === 0 && roles.length > 0 && <div className="text-center py-12 text-gray-500">
                     <Search className="w-12 h-12 mx-auto mb-4 text-gray-300" />
                     <p>暂无相关角色</p>
+                    <p className="text-sm mt-1">请尝试其他搜索关键词</p>
                   </div>}
 
                 {roles.length === 0 && <div className="text-center py-12 text-gray-500">
                     <Shield className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-                    <p>暂无角色数据</p>
-                    <Button onClick={fetchRoles} className="mt-4 bg-blue-600 hover:bg-blue-700">
-                      刷新
+                    <h3 className="text-lg font-medium mb-2">暂无角色数据</h3>
+                    <p className="mb-4">系统中还没有创建任何角色</p>
+                    <Button onClick={fetchRoles} className="bg-blue-600 hover:bg-blue-700">
+                      <RefreshCw className="w-4 h-4 mr-2" />
+                      重新加载
                     </Button>
                   </div>}
               </div>}
