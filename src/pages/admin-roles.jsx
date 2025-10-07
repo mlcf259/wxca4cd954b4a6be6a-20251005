@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 // @ts-ignore;
 import { Card, CardContent, CardHeader, CardTitle, Button, useToast, Table, TableHeader, TableRow, TableHead, TableBody, TableCell, Badge, Input } from '@/components/ui';
 // @ts-ignore;
-import { Plus, Search, Edit, Trash2, Shield, RefreshCw } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, Shield, RefreshCw, Loader } from 'lucide-react';
 
 import { AdminLayout } from '@/components/AdminLayout';
 export default function AdminRolesPage(props) {
@@ -16,6 +16,7 @@ export default function AdminRolesPage(props) {
   const [activeTab, setActiveTab] = useState('roles');
   const [roles, setRoles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   useEffect(() => {
     fetchRoles();
@@ -23,6 +24,7 @@ export default function AdminRolesPage(props) {
   const fetchRoles = async () => {
     try {
       setLoading(true);
+      setError(null);
       const result = await $w.cloud.callDataSource({
         dataSourceName: 'role',
         methodName: 'wedaGetRecordsV2',
@@ -44,9 +46,10 @@ export default function AdminRolesPage(props) {
       }
     } catch (error) {
       console.error('获取角色数据失败:', error);
+      setError('获取角色数据失败，请稍后重试');
       toast({
         title: "数据加载失败",
-        description: "无法获取角色列表",
+        description: "无法获取角色列表，请检查网络连接",
         variant: "destructive"
       });
     } finally {
@@ -102,6 +105,18 @@ export default function AdminRolesPage(props) {
   const getSystemBadge = isSystem => {
     return isSystem ? <Badge className="bg-blue-100 text-blue-800">系统</Badge> : <Badge className="bg-gray-100 text-gray-800">自定义</Badge>;
   };
+  if (error) {
+    return <AdminLayout activeTab={activeTab} onTabChange={handleTabChange} onLogout={handleLogout}>
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <div className="text-center">
+            <p className="text-red-600 mb-4">{error}</p>
+            <Button onClick={fetchRoles} className="bg-blue-600 hover:bg-blue-700">
+              重试
+            </Button>
+          </div>
+        </div>
+      </AdminLayout>;
+  }
   return <AdminLayout activeTab={activeTab} onTabChange={handleTabChange} onLogout={handleLogout}>
       <div className="space-y-6">
         {/* 页面标题和操作 */}
@@ -141,7 +156,7 @@ export default function AdminRolesPage(props) {
           </CardHeader>
           <CardContent>
             {loading ? <div className="text-center py-12">
-                <RefreshCw className="w-8 h-8 mx-auto mb-4 text-gray-400 animate-spin" />
+                <Loader className="w-8 h-8 mx-auto mb-4 text-blue-600 animate-spin" />
                 <p className="text-gray-600">加载中...</p>
               </div> : <div className="overflow-x-auto">
                 <Table>
@@ -189,6 +204,9 @@ export default function AdminRolesPage(props) {
                 {roles.length === 0 && <div className="text-center py-12 text-gray-500">
                     <Shield className="w-12 h-12 mx-auto mb-4 text-gray-300" />
                     <p>暂无角色数据</p>
+                    <Button onClick={fetchRoles} className="mt-4 bg-blue-600 hover:bg-blue-700">
+                      刷新
+                    </Button>
                   </div>}
               </div>}
           </CardContent>
