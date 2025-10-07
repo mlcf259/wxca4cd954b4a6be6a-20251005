@@ -33,7 +33,6 @@ export default function ActivityPage(props) {
           },
           getCount: false,
           pageSize: 20,
-          pageNumber: 1,
           orderBy: [{
             date: 'asc'
           }]
@@ -153,7 +152,7 @@ export default function ActivityPage(props) {
               <div className="space-y-2 text-sm text-gray-600">
                 {activity.date && <div className="flex items-center">
                     <Calendar className="w-4 h-4 mr-2" />
-                    {activity.date}
+                    {new Date(activity.date).toLocaleDateString()}
                   </div>}
                 {activity.location && <div className="flex items-center">
                     <MapPin className="w-4 h-4 mr-2" />
@@ -169,7 +168,7 @@ export default function ActivityPage(props) {
                   </div>}
               </div>
               
-              {activity.description && <p className="text-sm text-gray-500 mt-3 mb-4">{activity.description}</p>}
+              {activity.description && <p className="text-sm text-gray-500 mt-3 mb-4 line-clamp-2">{activity.description}</p>}
               
               <Button className="w-full bg-green-600 hover:bg-green-700" onClick={e => {
             e.stopPropagation();

@@ -25,10 +25,10 @@ export default function ActivityDetailPage(props) {
     try {
       setLoading(true);
 
-      // 获取活动详情
+      // 获取活动详情 - 简化查询条件
       const activityResult = await $w.cloud.callDataSource({
         dataSourceName: 'activity',
-        methodName: 'wedaGetItemV2',
+        methodName: 'wedaGetRecordsV2',
         params: {
           filter: {
             where: {
@@ -41,11 +41,15 @@ export default function ActivityDetailPage(props) {
           },
           select: {
             $master: true
-          }
+          },
+          pageSize: 1,
+          pageNumber: 1
         }
       });
-      if (activityResult) {
-        setActivity(activityResult);
+      if (activityResult && activityResult.records && activityResult.records.length > 0) {
+        setActivity(activityResult.records[0]);
+      } else {
+        setActivity(null);
       }
 
       // 如果用户已登录，查询报名状态
@@ -76,6 +80,8 @@ export default function ActivityDetailPage(props) {
         });
         if (registrationResult && registrationResult.records && registrationResult.records.length > 0) {
           setRegistration(registrationResult.records[0]);
+        } else {
+          setRegistration(null);
         }
       }
     } catch (error) {
@@ -216,8 +222,7 @@ export default function ActivityDetailPage(props) {
               recordTime: Date.now(),
               sourceActivity: activity?.title,
               activityId: activityId,
-              description: `参与活动: ${activity?.title}`,
-              status: '已生效'
+              description: `参与活动: ${activity?.title}`
             }
           }
         });
@@ -282,7 +287,7 @@ export default function ActivityDetailPage(props) {
         <CardContent className="space-y-4">
           {activity.date && <div className="flex items-center text-sm text-gray-600">
               <Calendar className="w-4 h-4 mr-2" />
-              {activity.date}
+              {new Date(activity.date).toLocaleDateString()}
             </div>}
           {activity.location && <div className="flex items-center text-sm text-gray-600">
               <MapPin className="w-4 h-4 mr-2" />
@@ -310,7 +315,7 @@ export default function ActivityDetailPage(props) {
             </CardContent>
           </Card>}
 
-        {activity.schedule && activity.schedule.length > 0 && <Card>
+        {activity.schedule && Array.isArray(activity.schedule) && activity.schedule.length > 0 && <Card>
             <CardHeader>
               <CardTitle className="text-lg">活动安排</CardTitle>
             </CardHeader>

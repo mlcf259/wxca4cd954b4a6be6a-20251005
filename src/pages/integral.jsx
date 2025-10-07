@@ -31,7 +31,7 @@ export default function IntegralPage(props) {
       setLoading(true);
       setError(null);
 
-      // 获取用户积分记录 - 简化查询条件
+      // 获取用户积分记录 - 简化查询条件，移除复杂的筛选
       const result = await $w.cloud.callDataSource({
         dataSourceName: 'points_record',
         methodName: 'wedaGetRecordsV2',

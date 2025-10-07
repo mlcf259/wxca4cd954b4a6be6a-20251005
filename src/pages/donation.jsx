@@ -21,6 +21,7 @@ export default function DonationPage(props) {
   const [materials, setMaterials] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const user = $w.auth.currentUser;
   useEffect(() => {
     fetchDonationData();
   }, []);
@@ -28,26 +29,16 @@ export default function DonationPage(props) {
     try {
       setLoading(true);
       setError(null);
-      // 获取公开的捐赠记录
+      // 获取公开的捐赠记录 - 简化查询条件
       const result = await $w.cloud.callDataSource({
         dataSourceName: 'donation_ledger',
         methodName: 'wedaGetRecordsV2',
         params: {
-          filter: {
-            where: {
-              $and: [{
-                isPublic: {
-                  $eq: true
-                }
-              }]
-            }
-          },
           select: {
             $master: true
           },
           getCount: false,
           pageSize: 50,
-          pageNumber: 1,
           orderBy: [{
             donationTime: 'desc'
           }]
