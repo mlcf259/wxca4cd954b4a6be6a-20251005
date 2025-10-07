@@ -23,13 +23,15 @@ export default function IntegralPage(props) {
       fetchPointsData();
     } else {
       setLoading(false);
+      setError('请先登录');
     }
   }, [user]);
   const fetchPointsData = async () => {
     try {
       setLoading(true);
       setError(null);
-      // 获取用户积分记录 - 修复查询条件，移除状态筛选
+
+      // 获取用户积分记录 - 简化查询条件
       const result = await $w.cloud.callDataSource({
         dataSourceName: 'points_record',
         methodName: 'wedaGetRecordsV2',
@@ -48,28 +50,28 @@ export default function IntegralPage(props) {
           },
           getCount: false,
           pageSize: 100,
-          pageNumber: 1,
           orderBy: [{
             recordTime: 'desc'
           }]
         }
       });
       if (result && result.records) {
-        // 计算总积分 - 只计算有效的积分记录
+        // 计算总积分 - 只计算正值的积分记录
         const total = result.records.reduce((sum, record) => {
-          if (record.pointsValue && (!record.status || record.status !== '无效')) {
+          if (record.pointsValue && record.pointsValue > 0) {
             return sum + (record.pointsValue || 0);
           }
           return sum;
         }, 0);
         setUserPoints(total);
-        // 设置兑换历史（筛选积分类型为兑换的记录）
-        const exchangeRecords = result.records.filter(record => record.pointsValue < 0 && (!record.status || record.status !== '无效')).map(record => ({
+
+        // 设置兑换历史（筛选负值的积分记录）
+        const exchangeRecords = result.records.filter(record => record.pointsValue < 0).map(record => ({
           id: record._id,
-          product: record.description?.replace('兑换:', '') || '未知商品',
+          product: record.description || '商品兑换',
           points: Math.abs(record.pointsValue || 0),
           date: new Date(record.recordTime).toLocaleDateString(),
-          status: record.status || '已完成'
+          status: '已完成'
         }));
         setExchangeHistory(exchangeRecords);
       } else {
@@ -81,7 +83,7 @@ export default function IntegralPage(props) {
       setError('获取积分数据失败，请稍后重试');
       toast({
         title: "数据加载失败",
-        description: "无法获取积分数据，请检查网络连接",
+        description: "无法获取积分数据",
         variant: "destructive"
       });
     } finally {
@@ -147,6 +149,7 @@ export default function IntegralPage(props) {
           title: "兑换成功",
           description: `成功兑换 ${product.name}`
         });
+
         // 刷新积分数据
         await fetchPointsData();
       } catch (error) {
