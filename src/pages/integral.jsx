@@ -29,7 +29,7 @@ export default function IntegralPage(props) {
     try {
       setLoading(true);
       setError(null);
-      // 获取用户积分记录
+      // 获取用户积分记录 - 修复查询条件，移除状态筛选
       const result = await $w.cloud.callDataSource({
         dataSourceName: 'points_record',
         methodName: 'wedaGetRecordsV2',
@@ -40,10 +40,6 @@ export default function IntegralPage(props) {
                 userId: {
                   $eq: user.userId
                 }
-              }, {
-                status: {
-                  $eq: '已生效'
-                }
               }]
             }
           },
@@ -51,7 +47,7 @@ export default function IntegralPage(props) {
             $master: true
           },
           getCount: false,
-          pageSize: 50,
+          pageSize: 100,
           pageNumber: 1,
           orderBy: [{
             recordTime: 'desc'
@@ -59,16 +55,16 @@ export default function IntegralPage(props) {
         }
       });
       if (result && result.records) {
-        // 计算总积分
+        // 计算总积分 - 只计算有效的积分记录
         const total = result.records.reduce((sum, record) => {
-          if (record.pointsValue && record.status === '已生效') {
+          if (record.pointsValue && (!record.status || record.status !== '无效')) {
             return sum + (record.pointsValue || 0);
           }
           return sum;
         }, 0);
         setUserPoints(total);
         // 设置兑换历史（筛选积分类型为兑换的记录）
-        const exchangeRecords = result.records.filter(record => record.pointsType === '积分兑换' && record.pointsValue < 0).map(record => ({
+        const exchangeRecords = result.records.filter(record => record.pointsValue < 0 && (!record.status || record.status !== '无效')).map(record => ({
           id: record._id,
           product: record.description?.replace('兑换:', '') || '未知商品',
           points: Math.abs(record.pointsValue || 0),
